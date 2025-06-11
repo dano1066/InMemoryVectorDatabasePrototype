@@ -1,0 +1,25 @@
+# Build output
+bin/
+obj/
+.vs/
+
+# Visual Studio user settings
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+*.tmp
+
+# Rider/JetBrains
+.idea/
+*.DotSettings.user
+
+# Env/Secrets (recommended)
+*.env
