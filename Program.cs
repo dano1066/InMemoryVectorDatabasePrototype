@@ -19,11 +19,28 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        // Load environment variables from .env if present
+        // Load environment variables from a `.env` file in the current
+        // directory. The project file copies `.env` to the output folder so
+        // builds run with the same configuration.
         Env.Load();
 
-        // Initialize services through factories
-        IAIService aiService = AIServiceFactory.CreateAzureOpenAIService();
+        // Let the user pick which AI service to use
+        Console.WriteLine("Select AI Provider:");
+        Console.WriteLine("1. Azure OpenAI");
+        Console.WriteLine("2. OpenAI");
+        Console.WriteLine("3. DeepSeek");
+        Console.WriteLine("Enter choice (1, 2, or 3): ");
+
+        string aiChoice = Console.ReadLine()?.Trim();
+
+        IAIService aiService = aiChoice switch
+        {
+            "2" => AIServiceFactory.CreateOpenAIService(),
+            "3" => AIServiceFactory.CreateDeepSeekAIService(),
+            _ => AIServiceFactory.CreateAzureOpenAIService()
+        };
+
+        // Initialize vector database
         IVectorDB vectorDb = VectorDBFactory.CreateInMemoryVectorDB();
 
         Console.WriteLine("Select mode:");
