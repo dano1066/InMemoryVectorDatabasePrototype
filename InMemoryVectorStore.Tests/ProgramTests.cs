@@ -2,6 +2,8 @@ using InMemoryVectorStore.Models.VectorStores;
 using InMemoryVectorStore.ServiceWrappers;
 using InMemoryVectorStore.VectorStores;
 using Moq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace InMemoryVectorStore.Tests
